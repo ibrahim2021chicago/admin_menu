@@ -1,19 +1,39 @@
-#!/usr/bin/bash
-echo "
+#!/bin/bash
 
-OPTIX Administration menu
--------------------------
-"
-echo `hostname`
-echo "DR Site: WTC
+# OPTIX Server Admin
+OptixServerAdmin () {
+  local PS3='Choose an option: '
+  local options=("Grep OPTIX Process" "Start OPTIX Server" "Stop OPTIX Server" "Back to main menu")
+  local opt
+  select opt in "${options[@]}"
+  do
+      case $opt in
+          "Grep OPTIX Process")
+              echo `ps -ef | grep oas`
+              ;;
+          "quit")
+              return
+              ;;
+          *) echo "invalid option $REPLY";;
+      esac
+  done
+}
 
-1. OPTIX Server Admin
-2. Mail Extractor Process Admin
-3. Apache Web Server Admin
-4. DR State Admin
-5. Show Support Notes
-Choose an option [1-5]: "
-read option
-case $option in
-1)OPTIX Server Admin;
-esac
+#main_menu
+PS3='Choose an option: '
+options=("OPTIX Server Admin" "Mail Extractor Process Admin" "Apache Web Server Admin" "DR State Admin" "Show Support Notes" "exit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "OPTIX Server Admin")
+            OptixServerAdmin
+            ;;
+        "Mail Extractor Process Admin")
+            echo ""
+            ;;
+        "exit")
+            exit
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
