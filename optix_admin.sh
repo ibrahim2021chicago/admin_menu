@@ -52,6 +52,31 @@ MailExtractorProcessAdmin () {
     done
 }
 
+# Apache Web Server Admin
+ApacheWebServerAdmin () {
+    local PS3='Choose an option: '
+    local options=("Grep Mail Apache Process (http)" "Start Apache Server (http)" "Stop Apache Server (http)" "Back to main menu")
+    local opt
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "Grep Mail Extractor Process")
+                echo `ps -ef | grep http`
+                ;;
+            "Start Mail Extractor Server")
+                echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start"
+                ;;
+            "Stop Mail Extractor Server")
+                echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop"
+                ;;
+            "Back to main menu")
+                break
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+}
+
 #main_menu
 PS3='Choose an option: '
 options=("OPTIX Server Admin" "Mail Extractor Process Admin" "Apache Web Server Admin" "DR State Admin" "Show Support Notes" "exit")
