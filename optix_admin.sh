@@ -55,19 +55,66 @@ MailExtractorProcessAdmin () {
 # Apache Web Server Admin
 ApacheWebServerAdmin () {
     local PS3='Choose an option: '
-    local options=("Grep Mail Apache Process (http)" "Start Apache Server (http)" "Stop Apache Server (http)" "Back to main menu")
+    local options=("Grep Apache Process (http)" "Start Apache Server (http)" "Stop Apache Server (http)" "Back to main menu")
     local opt
     select opt in "${options[@]}"
     do
         case $opt in
-            "Grep Mail Extractor Process")
+            "Grep Apache Process (http)")
                 echo `ps -ef | grep http`
                 ;;
-            "Start Mail Extractor Server")
+            "Start Apache Server (http)")
                 echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start"
                 ;;
-            "Stop Mail Extractor Server")
+            "Stop Apache Server (http)")
                 echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop"
+                ;;
+            "Back to main menu")
+                break
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+}
+
+# DR State Admin
+DRStateAdmin () {
+    local PS3='Choose an option: '
+    local options=("Show Current State" "Set to Active" "Set to Standby" "Show last known state" "Back to main menu")
+    local opt
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "Show Current State")
+                echo `sudo -u optix /opt/fedex/DR/scripts/get_dr_state`
+                ;;
+            "Set to Active")
+                echo "sudo -u optix /opt/fedex/DR/scripts/set_dr_state active"
+                ;;
+            "Set to Standby")
+                echo "sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby"
+                ;;
+            "Show last known State")
+                echo "more /var/fedex/DR/logs/last_known_state"
+                ;;
+            "Back to main menu")
+                break
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+}
+
+# Show Support Notes
+ShowSupportNotes () {
+    local PS3='Choose an option: '
+    local options=("Show Support Notes" "Back to main menu")
+    local opt
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "Show Support Notes")
+                echo ""
                 ;;
             "Back to main menu")
                 break
