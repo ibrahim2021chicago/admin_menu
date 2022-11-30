@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 echo "
 
 OPTIX Administration menu
@@ -15,5 +15,5 @@ echo "DR Site: WTC
 Choose an option [1-5]: "
 read option
 case $option in
-1)OPTIX Server Admin;;
+1)OPTIX Server Admin;
 esac
