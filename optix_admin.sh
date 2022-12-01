@@ -4,6 +4,15 @@ clear
 
 # OPTIX Server Admin
 OptixServerAdmin () {
+    clear
+    echo "
+OPTIX Server Administration
+---------------------------
+
+`hostname`
+DR Site: WTC
+"
+
     local PS3='Choose an option: '
     local options=("Grep OPTIX Process (OAS)" "Start OPTIX Server (OAS)" "Stop OPTIX Server (OAS)" "Back to main menu")
     local opt
@@ -29,6 +38,14 @@ OptixServerAdmin () {
 
 # Mail Extractor Process Admin
 MailExtractorProcessAdmin () {
+    clear
+    echo "
+Mail Extractor Process Administration
+-------------------------------------
+
+`hostname`
+DR Site: WTC
+"
     local PS3='Choose an option: '
     local options=("Grep Mail Extractor Process" "Start Mail Extractor Server" "Stop Mail Extractor Server" "Back to main menu")
     local opt
@@ -54,6 +71,14 @@ MailExtractorProcessAdmin () {
 
 # Apache Web Server Admin
 ApacheWebServerAdmin () {
+    clear
+    echo "
+Apache Web Server Administration
+--------------------------------
+
+`hostname`
+DR Site: WTC
+"
     local PS3='Choose an option: '
     local options=("Grep Apache Process (http)" "Start Apache Server (http)" "Stop Apache Server (http)" "Back to main menu")
     local opt
@@ -79,6 +104,14 @@ ApacheWebServerAdmin () {
 
 # DR State Admin
 DRStateAdmin () {
+    clear
+    echo "
+DR State Administration
+-----------------------
+
+`hostname`
+DR Site: WTC
+"
     local PS3='Choose an option: '
     local options=("Show Current State" "Set to Active" "Set to Standby" "Show last known state" "Back to main menu")
     local opt
@@ -107,6 +140,14 @@ DRStateAdmin () {
 
 # Show Support Notes
 ShowSupportNotes () {
+    clear
+    echo "
+Support Notes
+-------------
+
+`hostname`
+DR Site: WTC
+"
     local PS3='Choose an option: '
     local options=("Show Support Notes" "Back to main menu")
     local opt
