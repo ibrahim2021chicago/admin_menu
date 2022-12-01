@@ -20,7 +20,7 @@ OptixServerAdmin () {
                 echo "sudo -u optix /opt/software/optix/optix6/bin/start.optix"
                 ;;
             "Back to main menu")
-                break
+                exec "$0"
                 ;;
             *) echo "invalid option $REPLY";;
         esac
@@ -45,7 +45,7 @@ MailExtractorProcessAdmin () {
                 echo "sudo -u optix kill <process id>"
                 ;;
             "Back to main menu")
-                break
+                exec "$0"
                 ;;
             *) echo "invalid option $REPLY";;
         esac
@@ -70,7 +70,7 @@ ApacheWebServerAdmin () {
                 echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop"
                 ;;
             "Back to main menu")
-                break
+                exec "$0"
                 ;;
             *) echo "invalid option $REPLY";;
         esac
@@ -98,7 +98,7 @@ DRStateAdmin () {
                 echo "more /var/fedex/DR/logs/last_known_state"
                 ;;
             "Back to main menu")
-                break
+                exec "$0"
                 ;;
             *) echo "invalid option $REPLY";;
         esac
@@ -117,7 +117,7 @@ ShowSupportNotes () {
                 echo ""
                 ;;
             "Back to main menu")
-                break
+                exec "$0"
                 ;;
             *) echo "invalid option $REPLY";;
         esac
