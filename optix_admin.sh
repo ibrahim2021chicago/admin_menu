@@ -124,9 +124,18 @@ ShowSupportNotes () {
     done
 }
 
+#sysinfo
+echo "
+OPTIX Administration Menu
+-------------------------
+
+`hostname`
+DR Site: WTC
+"
 #main_menu
 PS3='Choose an option: '
 options=("OPTIX Server Admin" "Mail Extractor Process Admin" "Apache Web Server Admin" "DR State Admin" "Show Support Notes" "exit")
+COLUMNS=12
 select opt in "${options[@]}"
 do
     case $opt in
