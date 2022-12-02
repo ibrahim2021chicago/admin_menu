@@ -172,15 +172,15 @@ Stage_EDC="vwb22012.ute.fedex.com vwb22013.ute.fedex.com"
 Prod_WTC="pwb00217.lhsprod.fedex.com,pwb00218.lhsprod.fedex.com"
 Prod_EDC="pwb22021.lhsprod.fedex.com,pwb22022.lhsprod.fedex.com"
 
-if [[ $Dev_WTC = `hostname` ]];
+if [[ $Dev_WTC =~ `hostname` ]];
 then DRSite="Dev_WTC"
-elif [[ $Stage_WTC = `hostname` ]];
+elif [[ $Stage_WTC =~ `hostname` ]];
 then DRSite="Stage_WTC"
-elif [[ $Stage_EDC = `hostname` ]];
+elif [[ $Stage_EDC =~ `hostname` ]];
 then DRSite="Stage_EDC"
-elif [[ $Prod_WTC = `hostname` ]];
+elif [[ $Prod_WTC =~ `hostname` ]];
 then DRSite="Prod_WTC"
-elif [[ $Prod_EDC = `hostname` ]];
+elif [[ $Prod_EDC =~ `hostname` ]];
 then DRSite="Prod_EDC"
 else DRSite="undefined"
 fi
