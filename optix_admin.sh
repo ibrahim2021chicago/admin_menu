@@ -10,7 +10,7 @@ OPTIX Server Administration
 ---------------------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
 
     local PS3='Choose an option: '
@@ -44,7 +44,7 @@ Mail Extractor Process Administration
 -------------------------------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
     local PS3='Choose an option: '
     local options=("Grep Mail Extractor Process" "Start Mail Extractor Server" "Stop Mail Extractor Server" "Back to main menu")
@@ -77,7 +77,7 @@ Apache Web Server Administration
 --------------------------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
     local PS3='Choose an option: '
     local options=("Grep Apache Process (http)" "Start Apache Server (http)" "Stop Apache Server (http)" "Back to main menu")
@@ -110,7 +110,7 @@ DR State Administration
 -----------------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
     local PS3='Choose an option: '
     local options=("Show Current State" "Set to Active" "Set to Standby" "Show last known state" "Back to main menu")
@@ -146,7 +146,7 @@ Support Notes
 -------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
     local PS3='Choose an option: '
     local options=("Show Support Notes" "Back to main menu")
