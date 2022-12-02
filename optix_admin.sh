@@ -23,10 +23,10 @@ DR Site: $DRSite
                 echo `ps -ef | grep oas`
                 ;;
             "Start OPTIX Server (OAS)")
-                echo "sudo -u optix /opt/software/optix/optix6/bin/start.optix"
+                echo `sudo -u optix /opt/software/optix/optix6/bin/start.optix`
                 ;;
             "Stop OPTIX Server (OAS)")
-                echo "sudo -u optix /opt/software/optix/optix6/bin/start.optix"
+                echo `sudo -u optix /opt/software/optix/optix6/bin/stop.optix`
                 ;;
             "Back to main menu")
                 exec "$0"
@@ -56,7 +56,7 @@ DR Site: $DRSite
                 echo `ps -ef | grep oas`
                 ;;
             "Start Mail Extractor Server")
-                echo "sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh"
+                echo `sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh`
                 ;;
             "Stop Mail Extractor Server")
                 echo "sudo -u optix kill <process id>"
@@ -89,10 +89,10 @@ DR Site: $DRSite
                 echo `ps -ef | grep http`
                 ;;
             "Start Apache Server (http)")
-                echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start"
+                echo `sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start`
                 ;;
             "Stop Apache Server (http)")
-                echo "sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop"
+                echo `sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop`
                 ;;
             "Back to main menu")
                 exec "$0"
@@ -122,13 +122,13 @@ DR Site: $DRSite
                 echo `sudo -u optix /opt/fedex/DR/scripts/get_dr_state`
                 ;;
             "Set to Active")
-                echo "sudo -u optix /opt/fedex/DR/scripts/set_dr_state active"
+                echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state active`
                 ;;
             "Set to Standby")
-                echo "sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby"
+                echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby`
                 ;;
             "Show last known State")
-                echo "more /var/fedex/DR/logs/last_known_state"
+                echo `more /var/fedex/DR/logs/last_known_state`
                 ;;
             "Back to main menu")
                 exec "$0"
