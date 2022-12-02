@@ -165,13 +165,33 @@ DR Site: WTC
     done
 }
 
+#optix_hosts
+Dev_WTC="iwb22002.ute.fedex.com"
+Stage_WTC="vwb22002.ute.fedex.com,vwb22003.ute.fedex.com"
+Stage_EDC="vwb22012.ute.fedex.com vwb22013.ute.fedex.com"
+Prod_WTC="pwb00217.lhsprod.fedex.com,pwb00218.lhsprod.fedex.com"
+Prod_EDC="pwb22021.lhsprod.fedex.com,pwb22022.lhsprod.fedex.com"
+
+if [[ $Dev_WTC = `hostname` ]];
+then DRSite="Dev_WTC"
+elif [[ $Stage_WTC = `hostname` ]];
+then DRSite="Stage_WTC"
+elif [[ $Stage_EDC = `hostname` ]];
+then DRSite="Stage_EDC"
+elif [[ $Prod_WTC = `hostname` ]];
+then DRSite="Prod_WTC"
+elif [[ $Prod_EDC = `hostname` ]];
+then DRSite="Prod_EDC"
+else DRSite="undefined"
+fi
+
 #sysinfo
 echo "
 OPTIX Administration Menu
 -------------------------
 
 `hostname`
-DR Site: WTC
+DR Site: $DRSite
 "
 #main_menu
 PS3='Choose an option: '
