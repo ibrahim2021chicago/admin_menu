@@ -127,7 +127,7 @@ DR Site: $DRSite
             "Set to Standby")
                 echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby`
                 ;;
-            "Show last known State")
+            "Show last known state")
                 echo `more /var/fedex/DR/logs/last_known_state`
                 ;;
             "Back to main menu")
