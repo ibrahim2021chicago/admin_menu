@@ -60,7 +60,7 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep Mail Extractor Process")
-                echo `ps -ef | grep oas`
+                echo `ps -ef | grep dailywork-config`
                 echo ""
                 ;;
             "Start Mail Extractor Server")
