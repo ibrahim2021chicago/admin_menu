@@ -60,7 +60,13 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep Mail Extractor Process")
-                echo `ps -ef | grep dailywork-config | grep -v grep`
+                # echo `ps -ef | grep dailywork-config | grep -v grep`
+                ps_out=`ps -ef | grep dailywork-config | grep -v grep`;
+                if [[ "$ps_out" != "" ]];then
+                    echo "$ps_out"
+                else
+                    echo "Service is not running"
+                fi
                 echo ""
                 ;;
             "Start Mail Extractor Server")
