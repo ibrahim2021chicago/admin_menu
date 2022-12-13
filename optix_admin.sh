@@ -21,24 +21,24 @@ DR Site: $DRSite
         case $opt in
             "Grep OPTIX Process (OAS)")
                 echo "`ps -ef | grep oas`"
-		echo""
-		;;
+		        echo""
+		        ;;
             "Start OPTIX Server (OAS)")
                 sudo -u optix /opt/software/optix/optix6/bin/start.optix;
                 echo "Service started successfully"
-		echo""
-		;;
+		        echo""
+		        ;;
             "Stop OPTIX Server (OAS)")
                 sudo -u optix /opt/software/optix/optix6/bin/stop.optix;
                 echo "Service stopped successfully"
-		echo""
-		;;
+		        echo""
+		        ;;
             "Back to main menu")
                 exec "$0"
                 ;;
             *) echo "Invalid option $REPLY"
-		echo""
-		;;
+		        echo""
+		        ;;
         esac
     done
 }
@@ -61,9 +61,11 @@ DR Site: $DRSite
         case $opt in
             "Grep Mail Extractor Process")
                 echo `ps -ef | grep oas`
+                echo ""
                 ;;
             "Start Mail Extractor Server")
-                echo `sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh`
+                sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh;
+                echo ""
                 ;;
             "Stop Mail Extractor Server")
                 echo "sudo -u optix kill <process id>"
@@ -71,7 +73,9 @@ DR Site: $DRSite
             "Back to main menu")
                 exec "$0"
                 ;;
-            *) echo "invalid option $REPLY";;
+            *) echo "invalid option $REPLY"
+                echo ""
+                ;;
         esac
     done
 }
