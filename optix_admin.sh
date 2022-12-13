@@ -20,7 +20,12 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep OPTIX Process (OAS)")
-                echo "`ps -ef | grep oas | grep -v grep`"
+                ps_out=`ps -ef | grep oas | grep -v grep`;
+                if [[ "$ps_out" != "" ]];then
+                    echo "$ps_out"
+                else
+                    echo "Service is not running"
+                fi
 		        echo""
 		        ;;
             "Start OPTIX Server (OAS)")
@@ -60,7 +65,6 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep Mail Extractor Process")
-                # echo `ps -ef | grep dailywork-config | grep -v grep`
                 ps_out=`ps -ef | grep dailywork-config | grep -v grep`;
                 if [[ "$ps_out" != "" ]];then
                     echo "$ps_out"
@@ -106,18 +110,28 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep Apache Process (http)")
-                echo `ps -ef | grep http`
+                ps_out=`ps -ef | grep http | grep -v grep`;
+                if [[ "$ps_out" != "" ]];then
+                    echo "$ps_out"
+                else
+                    echo "Service is not running"
+                fi
+                echo ""
                 ;;
             "Start Apache Server (http)")
-                echo `sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start`
+                sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start;
+                echo ""
                 ;;
             "Stop Apache Server (http)")
-                echo `sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop`
+                sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop;
+                echo ""
                 ;;
             "Back to main menu")
                 exec "$0"
                 ;;
-            *) echo "invalid option $REPLY";;
+            *) echo "invalid option $REPLY"
+                echo ""
+                ;;
         esac
     done
 }
@@ -140,20 +154,26 @@ DR Site: $DRSite
         case $opt in
             "Show Current State")
                 echo `sudo -u optix /opt/fedex/DR/scripts/get_dr_state`
+                echo ""
                 ;;
             "Set to Active")
                 echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state active`
+                echo ""
                 ;;
             "Set to Standby")
                 echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby`
+                echo ""
                 ;;
             "Show last known state")
                 echo `more /var/fedex/DR/logs/last_known_state`
+                echo ""
                 ;;
             "Back to main menu")
                 exec "$0"
                 ;;
-            *) echo "invalid option $REPLY";;
+            *) echo "invalid option $REPLY"
+                echo ""
+                ;;
         esac
     done
 }
@@ -180,7 +200,9 @@ DR Site: $DRSite
             "Back to main menu")
                 exec "$0"
                 ;;
-            *) echo "invalid option $REPLY";;
+            *) echo "invalid option $REPLY"
+                echo ""
+                ;;
         esac
     done
 }
@@ -238,6 +260,8 @@ do
         "exit")
             exit
             ;;
-        *) echo "invalid option $REPLY";;
+        *) echo "invalid option $REPLY"
+            echo ""
+            ;;
     esac
 done
