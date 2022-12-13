@@ -30,12 +30,12 @@ DR Site: $DRSite
 		        ;;
             "Start OPTIX Server (OAS)")
                 sudo -u optix /opt/software/optix/optix6/bin/start.optix;
-                echo "Service started successfully"
+                test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
 		        echo""
 		        ;;
             "Stop OPTIX Server (OAS)")
                 sudo -u optix /opt/software/optix/optix6/bin/stop.optix;
-                echo "Service stopped successfully"
+                test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
 		        echo""
 		        ;;
             "Back to main menu")
@@ -75,12 +75,12 @@ DR Site: $DRSite
                 ;;
             "Start Mail Extractor Server")
                 sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh;
-                echo "Service started successfully"
+                test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
                 sudo -u optix kill $(ps aux | grep 'dailywork-config' | grep -v grep | awk '{print $2}');
-                echo "Service stopped successfully"
+                test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
             "Back to main menu")
@@ -120,10 +120,12 @@ DR Site: $DRSite
                 ;;
             "Start Apache Server (http)")
                 sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start;
+                test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Apache Server (http)")
                 sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop;
+                test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
             "Back to main menu")
