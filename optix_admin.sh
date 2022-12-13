@@ -65,10 +65,13 @@ DR Site: $DRSite
                 ;;
             "Start Mail Extractor Server")
                 sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh;
+                echo "Service started successfully"
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                echo "sudo -u optix kill <process id>"
+                sudo -u optix kill $(ps aux | grep 'dailywork-config' | awk '{print $2}'");
+                echo "Service stopped successfully"
+                echo ""
                 ;;
             "Back to main menu")
                 exec "$0"
