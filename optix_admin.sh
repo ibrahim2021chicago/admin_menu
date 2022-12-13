@@ -69,7 +69,7 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                sudo -u optix kill $(ps aux | grep 'dailywork-config' | awk '{print $2}'");
+                sudo -u optix kill $(ps aux | grep 'dailywork-config' | awk '{print $2}');
                 echo "Service stopped successfully"
                 echo ""
                 ;;
