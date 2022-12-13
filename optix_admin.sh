@@ -20,18 +20,25 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep OPTIX Process (OAS)")
-                echo `ps -ef | grep oas`
-                ;;
+                echo "`ps -ef | grep oas`"
+		echo""
+		;;
             "Start OPTIX Server (OAS)")
-                echo `sudo -u optix /opt/software/optix/optix6/bin/start.optix`
-                ;;
+                sudo -u optix /opt/software/optix/optix6/bin/start.optix;
+                echo "Service started successfully"
+		echo""
+		;;
             "Stop OPTIX Server (OAS)")
-                echo `sudo -u optix /opt/software/optix/optix6/bin/stop.optix`
-                ;;
+                sudo -u optix /opt/software/optix/optix6/bin/stop.optix;
+                echo "Service stopped successfully"
+		echo""
+		;;
             "Back to main menu")
                 exec "$0"
                 ;;
-            *) echo "invalid option $REPLY";;
+            *) echo "Invalid option $REPLY"
+		echo""
+		;;
         esac
     done
 }
