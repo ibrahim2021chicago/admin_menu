@@ -20,7 +20,7 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep OPTIX Process (OAS)")
-                echo "`ps -ef | grep oas`"
+                echo "`ps -ef | grep oas | grep -v grep`"
 		        echo""
 		        ;;
             "Start OPTIX Server (OAS)")
@@ -60,7 +60,7 @@ DR Site: $DRSite
     do
         case $opt in
             "Grep Mail Extractor Process")
-                echo `ps -ef | grep dailywork-config`
+                echo `ps -ef | grep dailywork-config | grep -v grep`
                 echo ""
                 ;;
             "Start Mail Extractor Server")
@@ -69,7 +69,7 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                sudo -u optix kill $(ps aux | grep 'dailywork-config' |grep -v grep | awk '{print $2}');
+                sudo -u optix kill $(ps aux | grep 'dailywork-config' | grep -v grep | awk '{print $2}');
                 echo "Service stopped successfully"
                 echo ""
                 ;;
