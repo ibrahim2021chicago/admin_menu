@@ -197,6 +197,7 @@ DR Site: $DRSite
     do
         case $opt in
             "Show Support Notes")
+                echo "Not available!"
                 echo ""
                 ;;
             "Back to main menu")
