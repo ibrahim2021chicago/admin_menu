@@ -36,7 +36,7 @@ DR Site: $DRSite
 		        echo""
 		        ;;
             "Stop OPTIX Server (OAS)")
-                sudo -u optix /opt/software/optix/optix6/bin/stop.optix;
+                sudo -u optix $optix_service/stop.optix;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
 		        echo""
 		        ;;
@@ -76,7 +76,7 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Mail Extractor Server")
-                sudo -u optix /opt/software/optix/optix6/bin/runDailyWorkMailDir.sh;
+                sudo -u optix $mail_extractor/runDailyWorkMailDir.sh;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
@@ -121,12 +121,12 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Apache Server (http)")
-                sudo -u optix /opt/fedex/optix/bin/apachectl unsecure start;
+                sudo -u optix $apachectl/apachectl unsecure start;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Apache Server (http)")
-                sudo -u optix /opt/fedex/optix/bin/apachectl unsecure stop;
+                sudo -u optix $apachectl/apachectl unsecure stop;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
@@ -157,19 +157,19 @@ DR Site: $DRSite
     do
         case $opt in
             "Show Current State")
-                echo `sudo -u optix /opt/fedex/DR/scripts/get_dr_state`
+                echo `sudo -u optix $dr_state/get_dr_state`
                 echo ""
                 ;;
             "Set to Active")
-                echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state active`
+                echo `sudo -u optix $dr_state/set_dr_state active`
                 echo ""
                 ;;
             "Set to Standby")
-                echo `sudo -u optix /opt/fedex/DR/scripts/set_dr_state standby`
+                echo `sudo -u optix $dr_state/set_dr_state standby`
                 echo ""
                 ;;
             "Show last known state")
-                echo `more /var/fedex/DR/logs/last_known_state`
+                echo `more $dr_logs/last_known_state`
                 echo ""
                 ;;
             "Back to main menu")
@@ -211,13 +211,6 @@ DR Site: $DRSite
         esac
     done
 }
-
-#optix_hosts
-Dev_WTC="iwb22002.ute.fedex.com"
-Stage_WTC="vwb22002.ute.fedex.com,vwb22003.ute.fedex.com"
-Stage_EDC="vwb22012.ute.fedex.com vwb22013.ute.fedex.com"
-Prod_WTC="pwb00217.lhsprod.fedex.com,pwb00218.lhsprod.fedex.com"
-Prod_EDC="pwb22021.lhsprod.fedex.com,pwb22022.lhsprod.fedex.com"
 
 if [[ $Dev_WTC =~ `hostname` ]];
 then DRSite="Dev_WTC"
