@@ -8,7 +8,7 @@ clear
 OptixServerAdmin () {
     clear
     echo "
-OPTIX Server Administration
+$env Server Administration
 ---------------------------
 
 `hostname`
@@ -16,12 +16,12 @@ DR Site: $DRSite
 "
 
     local PS3='Choose an option: '
-    local options=("Grep OPTIX Process (OAS)" "Start OPTIX Server (OAS)" "Stop OPTIX Server (OAS)" "Back to main menu")
+    local options=("Grep $env Process (OAS)" "Start $env Server (OAS)" "Stop $env Server (OAS)" "Back to main menu")
     local opt
     select opt in "${options[@]}"
     do
         case $opt in
-            "Grep OPTIX Process (OAS)")
+            "Grep $env Process (OAS)")
                 ps_out=`ps -ef | grep oas | grep -v grep`;
                 if [[ "$ps_out" != "" ]];then
                     echo "$ps_out"
@@ -30,12 +30,12 @@ DR Site: $DRSite
                 fi
 		        echo""
 		        ;;
-            "Start OPTIX Server (OAS)")
+            "Start $env Server (OAS)")
                 sudo -u optix $optix_service/start.optix;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
 		        echo""
 		        ;;
-            "Stop OPTIX Server (OAS)")
+            "Stop $env Server (OAS)")
                 sudo -u optix $optix_service/stop.optix;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
 		        echo""
