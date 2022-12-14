@@ -4,7 +4,7 @@ clear
 
 . optix_admin.config
 
-# OPTIX Server Admin
+# $env Server Admin
 OptixServerAdmin () {
     clear
     echo "
@@ -31,12 +31,12 @@ DR Site: $DRSite
 		        echo""
 		        ;;
             "Start $env Server (OAS)")
-                sudo -u optix $optix_service/start.optix;
+                sudo -u $user $optix_service/start.optix;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
 		        echo""
 		        ;;
             "Stop $env Server (OAS)")
-                sudo -u optix $optix_service/stop.optix;
+                sudo -u $user $optix_service/stop.optix;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
 		        echo""
 		        ;;
@@ -76,12 +76,12 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Mail Extractor Server")
-                sudo -u optix $mail_extractor/runDailyWorkMailDir.sh;
+                sudo -u $user $mail_extractor/runDailyWorkMailDir.sh;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                sudo -u optix kill $(ps aux | grep 'dailywork-config' | grep -v grep | awk '{print $2}');
+                sudo -u $user kill $(ps aux | grep 'dailywork-config' | grep -v grep | awk '{print $2}');
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
@@ -121,12 +121,12 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Apache Server (http)")
-                sudo -u optix $apachectl/apachectl unsecure start;
+                sudo -u $user $apachectl/apachectl unsecure start;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Apache Server (http)")
-                sudo -u optix $apachectl/apachectl unsecure stop;
+                sudo -u $user $apachectl/apachectl unsecure stop;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
@@ -157,15 +157,15 @@ DR Site: $DRSite
     do
         case $opt in
             "Show Current State")
-                echo `sudo -u optix $dr_state/get_dr_state`
+                echo `sudo -u $user $dr_state/get_dr_state`
                 echo ""
                 ;;
             "Set to Active")
-                echo `sudo -u optix $dr_state/set_dr_state active`
+                echo `sudo -u $user $dr_state/set_dr_state active`
                 echo ""
                 ;;
             "Set to Standby")
-                echo `sudo -u optix $dr_state/set_dr_state standby`
+                echo `sudo -u $user $dr_state/set_dr_state standby`
                 echo ""
                 ;;
             "Show last known state")
@@ -212,22 +212,9 @@ DR Site: $DRSite
     done
 }
 
-if [[ $Dev_WTC =~ `hostname` ]];
-then DRSite="Dev_WTC"
-elif [[ $Stage_WTC =~ `hostname` ]];
-then DRSite="Stage_WTC"
-elif [[ $Stage_EDC =~ `hostname` ]];
-then DRSite="Stage_EDC"
-elif [[ $Prod_WTC =~ `hostname` ]];
-then DRSite="Prod_WTC"
-elif [[ $Prod_EDC =~ `hostname` ]];
-then DRSite="Prod_EDC"
-else DRSite="undefined"
-fi
-
 #sysinfo
 echo "
-OPTIX Administration Menu
+$env Administration Menu
 -------------------------
 
 `hostname`
@@ -235,12 +222,12 @@ DR Site: $DRSite
 "
 #main_menu
 PS3='Choose an option: '
-options=("OPTIX Server Admin" "Mail Extractor Process Admin" "Apache Web Server Admin" "DR State Admin" "Show Support Notes" "exit")
+options=("$env Server Admin" "Mail Extractor Process Admin" "Apache Web Server Admin" "DR State Admin" "Show Support Notes" "exit")
 COLUMNS=12
 select opt in "${options[@]}"
 do
     case $opt in
-        "OPTIX Server Admin")
+        "$env Server Admin")
             OptixServerAdmin
             ;;
         "Mail Extractor Process Admin")
