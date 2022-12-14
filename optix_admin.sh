@@ -2,6 +2,8 @@
 
 clear
 
+. optix_admin.config
+
 # OPTIX Server Admin
 OptixServerAdmin () {
     clear
@@ -29,7 +31,7 @@ DR Site: $DRSite
 		        echo""
 		        ;;
             "Start OPTIX Server (OAS)")
-                sudo -u optix /opt/software/optix/optix6/bin/start.optix;
+                sudo -u optix $optix_service/start.optix;
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
 		        echo""
 		        ;;
