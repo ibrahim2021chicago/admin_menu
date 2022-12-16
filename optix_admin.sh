@@ -31,12 +31,12 @@ DR Site: $DRSite
 		        echo""
 		        ;;
             "Start $env Server (OAS)")
-                sudo -u $user $optix_service/start.optix;
+                ${cmd_optix_start[@]};
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
 		        echo""
 		        ;;
             "Stop $env Server (OAS)")
-                sudo -u $user $optix_service/stop.optix;
+                ${cmd_optix_stop[@]};
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
 		        echo""
 		        ;;
@@ -76,12 +76,12 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Mail Extractor Server")
-                sudo -u $user $mail_extractor/runDailyWorkMailDir.sh;
+                ${cmd_mailextractor_start[@]};
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                sudo -u $user kill $(ps aux | grep 'dailywork-config' | grep -v grep | awk '{print $2}');
+                ${cmd_mailextractor_stop[@]};
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
@@ -121,12 +121,12 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Start Apache Server (http)")
-                sudo -u $user $apachectl/apachectl unsecure start;
+                ${cmd_apachectl_start[@]};
                 test $? -eq 0 && echo "Service started successfully" || echo "Service couldn't be started"
                 echo ""
                 ;;
             "Stop Apache Server (http)")
-                sudo -u $user $apachectl/apachectl unsecure stop;
+                ${cmd_apachectl_stop[@]};
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
@@ -157,19 +157,19 @@ DR Site: $DRSite
     do
         case $opt in
             "Show Current State")
-                echo `sudo -u $user $dr_state/get_dr_state`
+                echo "${cmd_get_dr_state[@]}"
                 echo ""
                 ;;
             "Set to Active")
-                echo `sudo -u $user $dr_state/set_dr_state active`
+                echo "${cmd_set_dr_active[@]}"
                 echo ""
                 ;;
             "Set to Standby")
-                echo `sudo -u $user $dr_state/set_dr_state standby`
+                echo "${cmd_set_dr_standby[@]}"
                 echo ""
                 ;;
             "Show last known state")
-                echo `more $dr_logs/last_known_state`
+                echo "${cmd_last_known_state[@]}"
                 echo ""
                 ;;
             "Back to main menu")
