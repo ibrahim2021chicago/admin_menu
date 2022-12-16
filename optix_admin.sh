@@ -2,7 +2,7 @@
 
 clear
 
-. optix_admin.config
+. optix_admin.cfg
 
 # $env Server Admin
 OptixServerAdmin () {

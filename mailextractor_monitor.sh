@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. mailextractor.config
+. mailextractor.cfg
 
 host=`hostname -f`
 ps_out=`ps -ef | grep dailywork-config | grep -v grep`;
