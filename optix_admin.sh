@@ -81,7 +81,7 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                ${cmd_mailextractor_stop[@]};
+                sudo -u $user kill ${cmd_mailextractor_pid[@]};
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
