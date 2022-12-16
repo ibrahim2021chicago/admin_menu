@@ -157,19 +157,19 @@ DR Site: $DRSite
     do
         case $opt in
             "Show Current State")
-                echo "${cmd_get_dr_state[@]}"
+                ${cmd_get_dr_state[@]};
                 echo ""
                 ;;
             "Set to Active")
-                echo "${cmd_set_dr_active[@]}"
+                ${cmd_set_dr_active[@]};
                 echo ""
                 ;;
             "Set to Standby")
-                echo "${cmd_set_dr_standby[@]}"
+                ${cmd_set_dr_standby[@]};
                 echo ""
                 ;;
             "Show last known state")
-                echo "${cmd_last_known_state[@]}"
+                ${cmd_last_known_state[@]};
                 echo ""
                 ;;
             "Back to main menu")
