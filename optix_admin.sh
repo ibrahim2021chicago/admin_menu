@@ -81,7 +81,8 @@ DR Site: $DRSite
                 echo ""
                 ;;
             "Stop Mail Extractor Server")
-                sudo -u $user kill ${cmd_mailextractor_pid[@]};
+		mailextractor_pid=`ps -ef | grep 'dailywork-config' | grep -v grep | awk '{print $2}'`
+                sudo -u $user kill $mailextractor_pid;
                 test $? -eq 0 && echo "Service stopped successfully" || echo "Service couldn't be stopped"
                 echo ""
                 ;;
